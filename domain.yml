@@ -1,0 +1,76 @@
+version: "3.1"
+
+intents:
+  - greet
+  - contact_doctors
+  - request_product
+  - want_updates
+  - message_us
+  - provide_product_details
+  - provide_update_details
+  - provide_feedback
+
+entities:
+  - product_type
+
+slots:
+  product_type:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: product_type
+
+
+responses:
+  utter_greet:
+    - text: "Hello, how can I help you?"
+      buttons:
+        - title: "Contact more doctors/government officials"
+          payload: "/contact_doctors"
+        - title: "Request more product"
+          payload: "/request_product"
+        - title: "Want more updates"
+          payload: "/want_updates"
+        - title: "Message for us"
+          payload: "/message_us"
+
+  utter_ask_product_type:
+    - text: "What type of product do you want?"
+      buttons:
+        - title: "Accessories"
+          payload: "/provide_product_details{\"product_type\": \"accessories\"}"
+        - title: "Food"
+          payload: "/provide_product_details{\"product_type\": \"food\"}"
+        - title: "Medicine"
+          payload: "/provide_product_details{\"product_type\": \"medicine\"}"
+
+  utter_ask_product_details:
+    - text: "Please enter the details about the accessories."
+      condition:
+        - type: slot
+          name: product_type
+          value: "accessories"
+    - text: "Please enter the details about the food."
+      condition:
+        - type: slot
+          name: product_type
+          value: "food"
+    - text: "Please enter the details about the medicine."
+      condition:
+        - type: slot
+          name: product_type
+          value: "medicine"
+
+  utter_ask_update_details:
+    - text: "What other updates do you require?"
+
+  utter_ask_feedback:
+    - text: "Please enter your message."
+
+
+
+actions:
+  - action_contact_doctors
+  - action_store_product_details
+  - action_store_update_details
+  - action_store_feedback

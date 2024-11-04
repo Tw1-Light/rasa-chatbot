@@ -1,0 +1,46 @@
+version: "3.1"
+
+nlu:
+  - intent: greet
+    examples: |
+      - hello
+      - hi
+      - hey
+
+  - intent: contact_doctors
+    examples: |
+      - Contact more doctors
+      - I want to contact government officials
+
+  - intent: request_product
+    examples: |
+      - Request more product
+      - I need more products
+
+  - intent: want_updates
+    examples: |
+      - Want more updates
+      - I need updates
+
+  - intent: message_us
+    examples: |
+      - Message for us
+      - I want to leave a message
+
+  - intent: provide_product_details
+    examples: |
+      - accessories
+      - food
+      - medicine
+
+  - intent: provide_update_details
+    examples: |
+      - I need updates on the latest news
+      - I want updates on the product availability
+
+  - intent: provide_feedback
+    examples: |
+      - This is my feedback
+      - I have a message for you
+
+  

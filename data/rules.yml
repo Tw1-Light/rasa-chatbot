@@ -1,0 +1,38 @@
+version: "3.1"
+
+rules:
+  - rule: Greet user and display options
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Handle contacting doctors
+    steps:
+      - intent: contact_doctors
+      - action: action_contact_doctors
+
+  - rule: Handle product requests
+    steps:
+      - intent: request_product
+      - action: utter_ask_product_type
+
+  - rule: Handle product details based on product_type
+    condition:
+      - slot_was_set:
+          - product_type
+    steps:
+      - intent: provide_product_details
+      - action: utter_ask_product_details
+      - action: action_store_product_details
+
+  - rule: Handle update requests
+    steps:
+      - intent: want_updates
+      - action: utter_ask_update_details
+      - action: action_store_update_details
+
+  - rule: Handle feedback
+    steps:
+      - intent: message_us
+      - action: utter_ask_feedback
+      - action: action_store_feedback

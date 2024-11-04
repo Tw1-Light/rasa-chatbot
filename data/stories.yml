@@ -1,0 +1,35 @@
+version: "3.1"
+
+stories:
+  - story: greet and show options
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - story: contact doctors
+    steps:
+      - intent: contact_doctors
+      - action: action_contact_doctors
+
+  - story: request product
+    steps:
+      - intent: request_product
+      - action: utter_ask_product_type
+
+  - story: provide product details
+    steps:
+      - intent: provide_product_details
+      - action: utter_ask_product_details
+      - action: action_store_product_details
+
+  - story: want updates
+    steps:
+      - intent: want_updates
+      - action: utter_ask_update_details
+      - action: action_store_update_details
+
+  - story: message us
+    steps:
+      - intent: message_us
+      - action: utter_ask_feedback
+      - action: action_store_feedback
